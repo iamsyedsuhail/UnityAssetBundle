@@ -6,12 +6,19 @@ using UnityEngine.Networking;
 
 namespace IzanamiWorkshop.Firebase.GameComponents
 {
-	public class LoadAsset : MonoBehaviour
+	public class AssetBundleController : MonoBehaviour
 	{
+		public static AssetBundleController Instance;
+
 		[SerializeField] private bool clearCache;
 
-		// Start is called before the first frame update
-		void Start()
+        private void Awake()
+        {
+			Instance = this;
+		}
+
+        // Start is called before the first frame update
+        void Start()
 		{
 			if (clearCache)
 				Caching.ClearCache();
@@ -27,12 +34,11 @@ namespace IzanamiWorkshop.Firebase.GameComponents
 				return;
 			}
 
-			GameObject go = assetBundle.LoadAsset<GameObject>("Cube");
+			GameObject go = assetBundle.LoadAsset<GameObject>("Sphere");
 			Instantiate(go);
 
 			//unload bundle if there is no more reference to be used from
 			assetBundle.Unload(false);
 		}
-
 	}
 }
