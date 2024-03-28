@@ -1,4 +1,4 @@
-# UnityAssetBundle
+# UnityBatchAssetBundle
 
 This repo will help you create asset bundles, based on project structure.
 
